@@ -37,7 +37,7 @@
     
                 <div class="nav-products">
                     <form class="form-search">
-                        <input type="text" class="search-products" name="product_name" placeholder="Tên sản phẩm">
+                        <input type="text" class="search-products" name="title" placeholder="Tên sản phẩm">
                         <button type="submit" class="related-tag  btn-option" style="background-color: rgb(248, 83, 110);" >Tìm kiếm</button>
                     </form>
                     <button id="btn_add" class="related-tag btn-option" >Thêm sản phẩm</button>
@@ -88,18 +88,21 @@
                         <div class="product-list-info">
                             {{books[i][0]}}
                         </div>
-                        <div class="product-list-info">
-                            {% if books[i][1] is not none %}
-                            <img src="data:image/jpeg;base64,{{base64.b64encode(books[i][1]).decode('utf-8')}}" alt="product-image" class="product-img">
+                        <div class="product-list-info img-info">
+                            {% if books[i][6] is not none %}
+                                <img src="data:image/jpeg;base64,{{base64.b64encode(books[i][6]).decode('utf-8')}}" alt="product-image" class="product-img">
                             {% else %}
-                            <img src="https://via.placeholder.com/150" alt="product-image" class="product-img">
+                                <img src="https://via.placeholder.com/150" alt="product-image" class="product-img">
                             {% endif %}
+                        </div>
+        
+                        <div class="product-list-info">
+                            {{books[i][1]}}
                         </div>
         
                         <div class="product-list-info">
                             {{books[i][2]}}
                         </div>
-        
                         <div class="product-list-info">
                             {{books[i][3]}}
                         </div>
@@ -107,16 +110,13 @@
                             {{books[i][4]}}
                         </div>
                         <div class="product-list-info">
-                            {{books[i][5]}}
-                        </div>
-                        <div class="product-list-info">
-                            {{books[i][6]}}
+                            {{books[i][5]}}$
                         </div>
                     </div>
     
                     <div class="product-edit">
-                        <button  class="js_show_product product-edit-item btn-edit-item" style="background-color: rgb(255, 99, 125)"
-                            onclick="onUpdateProduct('{{books[i]}}')">Chỉnh sửa</button>
+                        <button  class="js_update_book product-edit-item btn-edit-item" style="background-color: rgb(255, 99, 125)"
+                            onclick='onUpdateBook("{{books[i][:6]}}")'>Chỉnh sửa</button>
                         <a href="/delete/{{books[i][0]}}" class="product-edit-item">
                             <button type="button" class="btn-edit-item" style="background-color: rgba(255, 46, 46, 0.792);">Xóa</button>
                         </a>
@@ -131,13 +131,12 @@
             
         </div>
 
-       
-
+        
 
     </div>
 
      <!-- add product -->
-     <div id="addBook" class="modal">
+    <div id="add_book" class="modal">
         <div  class="add-product">
             <div class="add-content">
                 <form action="/add" method="post" class="form-add" enctype="multipart/form-data">
@@ -166,7 +165,7 @@
                         </div>
         
                         <div class="update-info">
-                            <input type="text" name="genres" class="form-control-info" placeholder="Nhập tên thể loại...">
+                            <input type="text" name="genre" class="form-control-info" placeholder="Nhập tên thể loại...">
                         </div>
         
                         <div class="update-info">
@@ -182,6 +181,65 @@
                             <i class="fa-solid fa-xmark fa-xl"></i>
                         </button>
                         <button type="submit" class="btn-add">Thêm</button>
+                    </div>
+    
+                </form>
+    
+                
+            </div>
+        </div>
+
+        
+
+    </div>
+
+
+    <!-- Update product -->
+    <div id="update_book" class="modal">
+        <div  class="add-product">
+            <div class="add-content">
+                <form action="/update" method="post" class="form-add" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="upload-img">
+                            <div class="avatar-wrapper">
+                                <img id="avatar-update-preview" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY7qGmwPSyPiu7GB-Mr-vdSxc8jHTQlKL61g&usqp=CAU" alt="Avatar Preview">
+                            </div>
+                            <div class="btn-upload">
+                                <input  name="img" type="file" id="avatar_update" class="input-avatar" accept="image/*" >
+                            </div>
+                        </div>
+                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin sản phẩm</span>
+                        
+                        <div class="update-info">
+                            
+                            <input id="u_book_id" type="text" name="book_id" class="form-control-info" placeholder="Nhập id  sách...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input id="u_title" type="text" name="title" class="form-control-info" placeholder="Nhập tên sách...">
+                        </div>
+                        
+                        <div class="update-info">
+                            <input id="u_author" type="text" name="author" class="form-control-info" placeholder="Nhập tên tác giả...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input id="u_genre" type="text" name="genre" class="form-control-info" placeholder="Nhập tên thể loại...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input id="u_year" type="text" name="year" class="form-control-info" placeholder="Nhập năm xuất bản...">
+                        </div>
+                        <div class="update-info">
+                            <input id="u_price" type="text" name="price" class="form-control-info" placeholder="Nhập giá sách...">
+                        </div>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button type="button" class="js_close_update btn-close" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark fa-xl"></i>
+                        </button>
+                        <button type="submit" class="btn-add">update</button>
                     </div>
     
                 </form>

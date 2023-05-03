@@ -223,8 +223,8 @@
                         {% for i in range(0, len) %}
                         <div class="product_item">
                             <div class="product_cart">
-                                {% if books[i][1] is not none %}
-                                <img src="data:image/jpeg;base64,{{base64.b64encode(books[i][1]).decode('utf-8')}}" alt="product-image" class="cart_img">
+                                {% if books[i][6] is not none %}
+                                <img src="data:image/jpeg;base64,{{base64.b64encode(books[i][6]).decode('utf-8')}}" alt="product-image" class="cart_img">
                                 {% else %}
                                 <img src="https://via.placeholder.com/150" alt="product-image" class="cart_img">
                                 {% endif %}
@@ -233,10 +233,10 @@
                             <div class="product_item_inner">
                                 <div class="product_title">
                                     <div class="product_name">
-                                        <a href="#" class="product_link"> {{books[i][2]}}</a>
+                                        <a href="#" class="product_link"> {{books[i][1]}}</a>
                                     </div>
                                     <div class="product_price">
-                                        <span class="price">${{books[i][6]}}</span>
+                                        <span class="price">${{books[i][5]}}</span>
                                     </div>
                                     <div class="product_ratting">
                                         <i class="fa-solid fa-star " style="color: #f1ff29;"></i>
