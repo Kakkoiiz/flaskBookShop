@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Danh sách sản phẩm</title>
+  </head>
+  <body>
+    <h1>Danh sách sản phẩm</h1>
+    <ul>
+      {% for product in products %}
+        <li>{{ product.product_name }} - {{ product.price }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

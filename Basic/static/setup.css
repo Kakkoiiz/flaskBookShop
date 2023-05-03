@@ -1,0 +1,29 @@
+:root{
+    --main-color: rgb(251,230,230);
+    --btn-item-color:rgb(242, 202, 202);
+    --header-color: rgb(249,219,219) ;
+    --text-color: rgb(183,36,121) ;
+    --input-color: rgb(236,208,208);
+    --hover-color: rgb(238,218,218);
+}
+
+
+.flex-item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+
+.btn-item {
+    padding: 7px;
+    cursor: pointer;
+    background: var(--btn-item-color);
+    border-radius: 10px;
+    margin-left: 30px;
+    color:  var(--text-color);
+}
+
+

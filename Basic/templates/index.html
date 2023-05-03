@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/reset.css">
+    <link rel="stylesheet" href="../static/setup.css">
+    <link rel="stylesheet" href="../static/style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+        
+
+        <header class="nav-bar">
+            <div class="cps-container">
+                <div class="cps-header">
+                    <div class="navbar-left flex-item">
+                        <a href="" class="logo-link">
+                            <img src="https://i.pinimg.com/originals/86/69/dc/8669dce9aeab2acff7bf62c370933b59.gif" alt="" class="logo-img">
+                            <span class="logo-text">Dungdz</span>
+                        </a>
+                        
+                        <a href="" class="menu btn-item">
+                            <i class="fa-solid fa-bars"></i>
+                            <span class="menu-text">Danh mục</span>
+                        </a>
+                        
+                        <a href="" class="local-store btn-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span class="local-text">Địa điểm
+                                <i class="ti-angle-down"></i>
+                            </span>
+                        </a>
+
+                    </div>
+
+                    <div class="nav-search">
+                        <button type="submit" class="btn-search" >
+                            <i class="fa-solid fa-magnifying-glass fa-lg" style="color: #656f81;"></i>
+                        </button>
+                        <input class = "search-input" type="text" placeholder="Bạn cần tìm gì?">
+                    </div>
+                    
+                    <div class="navbar-right flex-item">
+                        <a href="" class="contact btn-item">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <span class="contact">0326680326</span>
+                        </a>
+        
+                        <a href="" class="about-store btn-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span class="about-text">Cửa hàng gần bạn</span>
+                        </a>
+                        {% if 'phone_number' in session %}
+                            <a href="{{ url_for('logout') }}" class="user btn-item">
+                                <span class="user-login">{{ get_user_fullname(session['phone_number']) }}</span>
+                                <i class="fa-solid fa-arrow-right-from-bracket" style="color: var(--text-color); transform: translateY(1px);"></i>
+                            </a>
+                        {% else %}
+                            <a href="/login" class="user btn-item">
+                                <i class="fa-solid fa-user"></i>
+                                <span class="user-login">Đăng nhập</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="clear"></div>
+
+        <div class="content">
+
+            <div class="menu-top">
+                <div class="block-top-home">
+                    <div class="menu-container">
+                        <div class="menu-tree">
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-mobile-screen-button"></i>
+                                        <span>Điện thoại</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-laptop"></i>
+                                        <span>Laptop</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-tablet-screen-button"></i>
+                                        <span>Máy tính bảng</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-headphones"></i>
+                                        <span>Âm thanh</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-regular fa-clock"></i>
+                                        <span>Đồng hồ</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-house-signal"></i>
+                                        <span>Nhà thông minh</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-diagram-successor"></i>
+                                        <span>Phụ kiện</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-desktop"></i>
+                                        <span>PC - Màn hình</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-tv"></i>
+                                        <span>Tivi</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span>Thu cũ đổi mới</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-solid fa-mobile-retro"></i>
+                                        <span>Hàng cũ</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="label-menu-tree">
+                                <div class="label-item">
+                                    <div class="icon-left">
+                                        <i class="fa-regular fa-newspaper"></i>
+                                        <span>Khuyễn mãi</span>
+                                    </div>
+                                    <div class="icon-right">
+                                        <i class="fa-solid fa-angle-right"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            
+                        </div>
+                    </div>
+        
+                    <div class="sliding-home">
+                        <div class="swiper-container">
+                            <div class="my-slides">
+                                <img class="img-feature" src="https://i.pinimg.com/originals/f8/8d/37/f88d37d59512173c6df31ab30efa0a8c.gif" alt="">
+                                <img class="img-feature" src="https://i.pinimg.com/236x/aa/16/2b/aa162be3998cfb7fc262c29f3abe6204.jpg" alt="">
+                                <img class="img-feature" src="https://i.pinimg.com/236x/aa/16/2b/aa162be3998cfb7fc262c29f3abe6204.jpg" alt="">
+                                <img class="img-feature" src="https://i.pinimg.com/236x/aa/16/2b/aa162be3998cfb7fc262c29f3abe6204.jpg" alt="">                        
+                                <img class="img-feature" src="https://i.pinimg.com/236x/aa/16/2b/aa162be3998cfb7fc262c29f3abe6204.jpg" alt="">
+                            </div>
+                            <div class="control prev">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </div>
+                            <div class="control next">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </div>
+        
+                        </div>
+                        <div class="list-img">
+                            <div class="sub-list">
+                                <div>
+                                    TV SAMSUNG
+                                    <br>
+                                    Giải trí cực đỉnh
+                                </div>
+                            </div>
+                            <div class="active sub-list">
+                                <div>
+                                    TV SAMSUNG
+                                    <br>
+                                    Giải trí cực đỉnh
+                                </div>
+                            </div>
+                            <div class="sub-list">
+                                <div>
+                                    TV SAMSUNG
+                                    <br>
+                                    Giải trí cực đỉnh
+                                </div>
+                            </div>
+                            <div class="sub-list">
+                                <div>
+                                    TV SAMSUNG
+                                    <br>
+                                    Giải trí cực đỉnh
+                                </div>
+                            </div>
+                            <div class="sub-list">
+                                <div>
+                                    TV SAMSUNG
+                                    <br>
+                                    Giải trí cực đỉnh
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+        
+                    <div class="right-banner">
+                        <a href="" class="right-banner-item">
+                            <img src="https://i.pinimg.com/originals/92/c9/b4/92c9b4a23841a76f138f1da6826057dc.gif" alt="" class="banner-img">
+                        </a>
+                        <a href="" class="right-banner-item">
+                            <img src="https://i.pinimg.com/originals/7d/b2/4b/7db24b01a8ba90ab48a448d01f32aa60.gif" alt="" class="banner-img">
+                        </a>
+                        <a href="" class="right-banner-item">
+                            <img src="https://i.pinimg.com/originals/ea/87/19/ea87191404a209c83613888054df3e50.gif" alt="" class="banner-img">
+                        </a>
+        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="horizontal-banner">
+                <a href="" class="horizontal-banner-item">
+                    <img src="https://cdn2.cellphones.com.vn/1200x75,webp,q100/https://dashboard.cellphones.com.vn/storage/banner-special-desktop-pkchaohe.png" alt="" class="horizontal-banner-img">
+                </a>
+            </div>
+            
+            <div class="home-page">
+        
+                <div class="feature-product">
+                    <div class="product-list-title">
+                    <div class="list-title-sb">
+                        <a href="" class="title">Điện thoại nổi bật</a>
+                        
+                        <div class="list-related-tag">
+                            {% if role == "admin" %}
+                            <a href="/crud" id="btn_add" class="related-tag" style="background-color: #ff0051; color:aliceblue; border: none; cursor: pointer;">Thêm sản phẩm</a>
+                            {% endif %}
+
+                            <a href="https://cellphones.com.vn/mobile/apple.html" class="related-tag">Apple</a>
+                            <a href="https://cellphones.com.vn/mobile/samsung.html" class="related-tag">Samsung</a>
+                            <a href="https://cellphones.com.vn/mobile/xiaomi.html" class="related-tag">Xiaomi</a>
+                            <a href="https://cellphones.com.vn/mobile/oppo.html" class="related-tag">OPPO</a>
+                            <a href="https://cellphones.com.vn/mobile/vivo.html" class="related-tag">vivo</a>
+                            <a href="https://cellphones.com.vn/mobile/realme.html" class="related-tag">realme</a>
+                            <a href="https://cellphones.com.vn/mobile/nokia.html" class="related-tag">Nokia</a>
+                            <a href="https://cellphones.com.vn/mobile/asus.html" class="related-tag">ASUS</a>
+                            <a href="https://cellphones.com.vn/mobile/tecno.html" class="related-tag">Tecno</a>
+                            <a href="https://cellphones.com.vn/mobile.html" class="related-tag">Xem tất cả</a>
+                        </div>
+                    </div>
+                    </div>
+            
+            
+                    <div class="product-list">
+                        <div class="product-list-swiper">
+                            <div class="swiper-wapper">
+                                {% for i in range(0, len) %}
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                {% if products[i][4] is not none %}
+                                                    <img src="data:image/jpeg;base64,{{base64.b64encode(products[i][4]).decode('utf-8')}}" alt="product-image" class="product-img">
+                                                {% else %}
+                                                    <img src="https://via.placeholder.com/150" alt="product-image" class="product-img">
+                                                {% endif %}
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>{{products[i][1]}}</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">{{products[i][3]}}</p>
+                                                <s class="box-price-through">10000 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">{{products[i][2]}}</p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+
+        
+                                </div>
+                                {% endfor %}
+        
+                                
+                            </div>
+                        </div>
+                    </div>
+            
+            
+                </div>
+            
+                <div class="feature-product">
+                    <div class="product-list-title">
+                    <div class="list-title-sb">
+                            <a href="" class="title">LAPTOP</a>
+                            
+                            <div class="list-related-tag">
+                                <a href="https://cellphones.com.vn/laptop/mac.html" class="related-tag">Macbook</a>
+                                <a href="https://cellphones.com.vn/laptop/lenovo/thinkpad.html" class="related-tag">Thinkpad</a>
+                                <a href="https://cellphones.com.vn/laptop/asus.html" class="related-tag">Asus</a>
+                                <a href="https://cellphones.com.vn/laptop/hp.html" class="related-tag">HP</a>
+                                <a href="https://cellphones.com.vn/laptop/surface.html" class="related-tag">Surface</a>
+                                <a href="https://cellphones.com.vn/laptop/acer.html" class="related-tag">Acer</a>
+                                <a href="https://cellphones.com.vn/laptop/msi.html" class="related-tag">MSI</a>
+                                <a href="https://cellphones.com.vn/laptop/dell.html" class="related-tag">Dell</a>
+                                <a href="https://cellphones.com.vn/laptop.html" class="related-tag">Xem tất cả</a>
+                            </div>
+                    </div>
+                    </div>
+            
+            
+                    <div class="product-list">
+                        <div class="product-list-swiper">
+                            <div class="swiper-wapper">
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/t/e/text_ng_n_3__1_71.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop Dell Inspiron 3511 5829BLK</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">9999 USD</p>
+                                                <s class="box-price-through">10000 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                
+                            
+            
+                                
+                            </div>
+                        </div>
+                    </div>
+            
+            
+                </div>
+                
+                <div class="feature-product">
+                    <div class="product-list-title">
+                    <div class="list-title-sb">
+                            <a href="" class="title">Màn hình, máy tính để bàn</a>
+                            
+                            <div class="list-related-tag">
+                                <a href="https://cellphones.com.vn/laptop/mac.html" class="related-tag">Macbook</a>
+                                <a href="https://cellphones.com.vn/laptop/lenovo/thinkpad.html" class="related-tag">Thinkpad</a>
+                                <a href="https://cellphones.com.vn/laptop/asus.html" class="related-tag">Asus</a>
+                                <a href="https://cellphones.com.vn/laptop/hp.html" class="related-tag">HP</a>
+                                <a href="https://cellphones.com.vn/laptop/surface.html" class="related-tag">Surface</a>
+                                <a href="https://cellphones.com.vn/laptop/acer.html" class="related-tag">Acer</a>
+                                <a href="https://cellphones.com.vn/laptop/msi.html" class="related-tag">MSI</a>
+                                <a href="https://cellphones.com.vn/laptop/dell.html" class="related-tag">Dell</a>
+                                <a href="https://cellphones.com.vn/laptop.html" class="related-tag">Xem tất cả</a>
+                            </div>
+                    </div>
+                    </div>
+            
+            
+                    <div class="product-list">
+                        <div class="product-list-swiper">
+                            <div class="swiper-wapper">
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/2/_/2_63.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Màn hình LG UltraWide 29WP60G 29 inch </h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">10000 USD</p>
+                                                <s class="box-price-through">10001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/m/a/man-hinh-lg-27-inch-27mp400-1.jpg" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Màn hình LG 27 inch 27MP400</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">1500 USD</p>
+                                                <s class="box-price-through">1509 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                
+                            
+            
+                                
+                            </div>
+                        </div>
+                    </div>
+            
+            
+                </div>
+            
+                <div class="feature-product">
+                    <div class="product-list-title">
+                    <div class="list-title-sb">
+                            <a href="" class="title">MÁY TÍNH BẢNG</a>
+                            
+                            <div class="list-related-tag"><a href="https://cellphones.com.vn/ipad-10-9-inch-2022.html" class="related-tag">iPad 10.9 inch 2022</a>
+                                <a href="https://cellphones.com.vn/tablet/ipad-air.html" class="related-tag">iPad Air</a>
+                                <a href="https://cellphones.com.vn/tablet/ipad-pro.html" class="related-tag">iPad Pro</a>
+                                <a href="https://cellphones.com.vn/tablet/lenovo.html" class="related-tag">Lenovo</a>
+                                <a href="https://cellphones.com.vn/tablet/samsung.html" class="related-tag">Samsung</a>
+                                <a href="https://cellphones.com.vn/tablet/xiaomi.html" class="related-tag">Xiaomi</a> 
+                                <a href="https://cellphones.com.vn/tablet.html" class="related-tag">Xem tất cả</a>
+                            </div>
+                    </div>
+                    </div>
+            
+            
+                    <div class="product-list">
+                        <div class="product-list-swiper">
+                            <div class="swiper-wapper">
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/x/_/x_mmas.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>iPad 10.2 2021 WiFi 64GB | Chính hãng Apple Việt Nam</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">500 USD</p>
+                                                <s class="box-price-through">510 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/t/a/tab_s8_2.jpg" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Samsung Galaxy Tab S8 WIFI</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">2500 USD</p>
+                                                <s class="box-price-through">2509 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                
+                            
+            
+                                
+                            </div>
+                        </div>
+                    </div>
+            
+                    
+            
+            
+                </div>
+                
+                <div class="feature-product">
+                    <div class="product-list-title">
+                    <div class="list-title-sb">
+                            <a href="" class="title">ÂM THANH</a>
+                            
+                            <div class="list-related-tag">
+                                <a href="https://cellphones.com.vn/thiet-bi-am-thanh/tai-nghe/tai-nghe-bluetooth.html" class="related-tag">Tai nghe Bluetooth</a>
+                                <a href="https://cellphones.com.vn/thiet-bi-am-thanh/tai-nghe/tai-nghe-khong-day.html" class="related-tag">Tai nghe không dây</a>
+                                <a href="https://cellphones.com.vn/thiet-bi-am-thanh/tai-nghe/gaming.html" class="related-tag">Tai nghe Gaming</a>
+                                <a href="https://cellphones.com.vn/thiet-bi-am-thanh/tai-nghe/headphones.html" class="related-tag">Tai nghe chụp tai</a>
+                                <a href="https://cellphones.com.vn/thiet-bi-am-thanh/loa/loa-bluetooth.html" class="related-tag">Loa Bluetooth</a>
+                                <a href="https://cellphones.com.vn/thiet-bi-am-thanh/loa/loa-keo.html" class="related-tag">Loa Karaoke</a>
+                                <a href="https://cellphones.com.vn/thiet-bi-am-thanh/loa/loa-tivi-soundbar.html" class="related-tag">Loa Soundbar</a> 
+                                <a href="https://cellphones.com.vn/thiet-bi-am-thanh.html" class="related-tag">Xem tất cả</a>
+                            </div>
+                    </div>
+                    </div>
+            
+            
+                    <div class="product-list">
+                        <div class="product-list-swiper">
+                            <div class="swiper-wapper">
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/g/r/group_170_1_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3> Tai nghe Bluetooth Apple AirPods 3 2022 sạc có dây</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">299 USD</p>
+                                                <s class="box-price-through">300 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/g/r/group_211_2_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Loa Bluetooth JBL Charge 4 | Chính hãng Việt Nam</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">399 USD</p>
+                                                <s class="box-price-through">499 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                <div class="product-info">
+                                    <a href="" class="product-link">
+                                        <div class="product-link-item">
+                                            <div class="product-image">
+                                                <img src="https://cdn2.cellphones.com.vn/358x358,webp,q100/media/catalog/product/5/h/5h03_1.png" alt="" class="product-img">
+                                            </div>
+                
+                                            <div class="product-name">
+                                                <h3>Laptop ASUS Gaming TUF FX506LHB-HN188W</h3>
+                                            </div>
+                
+                                            <div class="box-price">
+                                                <p class="box-price-show">20000 USD</p>
+                                                <s class="box-price-through">20001 USD</s>
+                                            </div>
+                
+                                            <div class="promotion">
+                                                <p class="coupon-price">Thu cũ lên đời - Giá thu cao nhất - Tặng thêm 1 triệu khi lên đời </p>
+                                            </div>
+                
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="btn-wish-list">
+                                        <div class="box-ratting">
+                                            <div>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                                <i class="fa-solid fa-star" style="color: #f0e805;"></i>
+                                            </div>
+                                        </div>
+                                        <button class="heart-btn">
+                                            <span style="color: rgb(151, 157, 157); ">Yêu thích</span>
+                                            <i class="fa-regular fa-heart fa-xl" style="color: #f60970; cursor:pointer;"></i>
+                                        </button>
+                                    </div>
+                                </div>
+            
+                                
+                            
+            
+                                
+                            </div>
+                        </div>
+                    </div>
+            
+                    
+            
+            
+                </div>
+            </div>
+            
+            <div class="categories">
+                <div class="product-list-title">
+                    <div class="list-title-sb">
+                    <a href="https://cellphones.com.vn/phu-kien.html" class="title">Phụ kiện</a>
+                    
+                    <div class="list-related-tag">
+                        <a href="https://cellphones.com.vn/phu-kien.html" style="color: var(--text-color);">Xem tất cả</a>
+                    </div>
+                    </div>
+                </div>
+        
+                <div class="categories-content">
+                    <div class="categories-content-wapper">
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-1644.svg);" class="item-categories-outer">
+                            <p class="categories-title">Nổi bật</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-43.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://cdn2.cellphones.com.vn/x/media/icons/category/cate-966.svg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+        
+        
+                    </div>
+                </div>
+        
+                
+            </div>
+        
+        
+            <div class="categories">
+                <div class="product-list-title">
+                    <div class="list-title-sb">
+                    <a href="https://cellphones.com.vn/phu-kien.html" class="title">Linh Kiện máy tính</a>
+                    
+                    <div class="list-related-tag">
+                        <a href="https://cellphones.com.vn/phu-kien.html" style="color: var(--text-color);">Xem tất cả</a>
+                    </div>
+                    </div>
+                </div>
+        
+                <div class="categories-content">
+                    <div class="categories-content-wapper">
+                        <a href="" style = "background-image: url(https://cellphones.com.vn/media/icons/category/cate-868.svg);" class="item-categories-outer">
+                            <p class="categories-title">Nổi bật</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/originals/75/01/4b/75014b21561b7ef5df30eb0c47480f20.gif);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                    </div>
+                </div>
+        
+                
+            </div>
+        
+            <div class="categories">
+                <div class="product-list-title">
+                    <div class="list-title-sb">
+                    <a href="https://cellphones.com.vn/phu-kien.html" class="title">Hàng cũ</a>
+                    
+                    <div class="list-related-tag">
+                        <a href="https://cellphones.com.vn/phu-kien.html" style="color: var(--text-color);">Xem tất cả</a>
+                    </div>
+                    </div>
+                </div>
+        
+                <div class="categories-content">
+                    <div class="categories-content-wapper">
+                        <a href="" style = "background-image: url(https://cellphones.com.vn/media/icons/category/cate-868.svg);" class="item-categories-outer">
+                            <p class="categories-title">Nổi bật</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/originals/75/01/4b/75014b21561b7ef5df30eb0c47480f20.gif);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                        <a href="" style = "background-image: url(https://i.pinimg.com/564x/5d/79/aa/5d79aa80b7ccb938598b30dfe6dc15e3.jpg);" class="item-categories-outer">
+                            <p class="categories-title">Phụ kiện Apple</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="brand-banner">
+                <div class="product-list-title">
+                    <div class="list-title-sb">
+                    <a href="https://cellphones.com.vn/phu-kien.html" class="title">Ưu đãi thanh toán</a>
+                    </div>
+                </div>
+                <div class="brand-banner-content">
+                    <a href="" class="brand-banner-item">
+                        <img src="https://cdn2.cellphones.com.vn/690x300,webp,q100/https://dashboard.cellphones.com.vn/storage/Sliding.jpg" alt="" class="brand-banner-item">
+                    </a>
+                </div>
+            </div>
+        
+            <div class="brand-banner">
+                <div class="product-list-title">
+                    <div class="list-title-sb">
+                    <a href="#" class="title">Chuyên trang thương hiệu</a>
+                    </div>
+                </div>
+                <div class="brand-banner-content">
+                    <a href="" class="brand-banner-item">
+                        <img src="https://cdn2.cellphones.com.vn/690x300,webp,q100/https://dashboard.cellphones.com.vn/storage/th-hieu-apple-0013.png" alt="" class="brand-banner-item">
+                    </a>
+                    <a href="" class="brand-banner-item">
+                        <img src="https://cdn2.cellphones.com.vn/690x300,webp,q100/https://dashboard.cellphones.com.vn/storage/SIS asus.png" alt="" class="brand-banner-item">
+                    </a>
+                    <a href="" class="brand-banner-item">
+                        <img src="https://cdn2.cellphones.com.vn/690x300,webp,q100/https://dashboard.cellphones.com.vn/storage/th-hieu-ss-0013.png" alt="" class="brand-banner-item">
+                    </a>
+                    <a href="" class="brand-banner-item">
+                        <img src="https://cdn2.cellphones.com.vn/690x300,webp,q100/https://dashboard.cellphones.com.vn/storage/xiaomi.png" alt="" class="brand-banner-item">
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="new_footer_area bg_color">
+            <div class="new_footer_top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Get in Touch</h3>
+                                <p>Don’t miss any updates of our new templates and extensions.!</p>
+                                <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                                    <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                                    <button class="btn btn_get btn_get_two" type="submit">Subscribe</button>
+                                    <p class="mchimp-errmessage" style="display: none;"></p>
+                                    <p class="mchimp-sucmessage" style="display: none;"></p>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Download</h3>
+                                <ul class="list-unstyled f_list">
+                                    <li><a href="#">Company</a></li>
+                                    <li><a href="#">Android App</a></li>
+                                    <li><a href="#">ios App</a></li>
+                                    <li><a href="#">Desktop</a></li>
+                                    <li><a href="#">Projects</a></li>
+                                    <li><a href="#">My tasks</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                                <ul class="list-unstyled f_list">
+                                    <li><a href="#">FAQ</a></li>
+                                    <li><a href="#">Term &amp; conditions</a></li>
+                                    <li><a href="#">Reporting</a></li>
+                                    <li><a href="#">Documentation</a></li>
+                                    <li><a href="#">Support Policy</a></li>
+                                    <li><a href="#">Privacy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                                <h3 class="f-title f_600 t_color f_size_18">Team Solutions</h3>
+                                <div class="f_social_icon">
+                                    <a href="#" class="fab fa-facebook"></a>
+                                    <a href="#" class="fab fa-twitter"></a>
+                                    <a href="#" class="fab fa-linkedin"></a>
+                                    <a href="#" class="fab fa-pinterest"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer_bg">
+                    <div class="footer_bg_one"></div>
+                    <div class="footer_bg_two"></div>
+                </div>
+            </div>
+            <div class="footer_bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 col-sm-7">
+                            <p class="mb-0 f_400">© cakecounter Inc.. 2019 All rights reserved.</p>
+                        </div>
+                        <div class="col-lg-6 col-sm-5 text-right">
+                            <p>Dungdz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <script src="../static/js/app.js"></script>
+</body>
+</html>

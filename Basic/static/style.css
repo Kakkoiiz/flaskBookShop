@@ -1,0 +1,91 @@
+/* ---------------add product------------- */
+
+.add-product {
+  background-color: pink;
+  top: 0;
+  right: 30%;
+  position: absolute;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.add-content {
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: grid;
+  justify-content: center;
+
+}
+
+.form-add{
+  margin: 30px 150px;
+}
+
+.upload-img {
+  margin-top: 30px;
+}
+
+
+.avatar-wrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  overflow: hidden;
+  border: 1px solid #bbb7b7;
+  border-radius: 10px;
+}
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.btn-upload {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.input-avatar {
+  margin-top: 10px;
+  width: 70px;
+  
+}
+
+.update-info {
+  margin-top: 20px;
+}
+.form-control-info {
+  padding-left: 10px;
+  border-radius: 5px;
+  width: 250px;
+  height: 20px;
+  border: 1px solid rgb(233, 136, 152);
+  outline: none;
+}
+.btn-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  color: red;
+  
+  background-color:transparent;
+}
+
+.btn-add {
+  margin-top: 20px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  width: 260px;
+  height: 20px;
+  background-color: rgb(250, 87, 114);
+
+}
+
+
+

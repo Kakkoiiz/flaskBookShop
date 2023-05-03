@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/reset.css">
+    <link rel="stylesheet" href="../static/style1.css">
+    <link rel="stylesheet" href="../static/setup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+
+    
+    <div class="container-control">
+        <div class="select-option">
+            <a href="/" class="logo-link" style="margin: 10px 5px;">
+                <img src="https://i.pinimg.com/originals/86/69/dc/8669dce9aeab2acff7bf62c370933b59.gif" alt="" class="logo-img" style="width: 60px;">
+                <span class="logo-text" style="font-size: 20px;">Dungdz</span>
+            </a>
+
+            <div class="menu-control">
+                <button id="btn_show_products" class="btn_show_control">Thông tin hàng hóa</button>
+                <button id="btn_show_users" class="btn_show_control">Thông tin người dùng</button>
+            </div>
+
+        </div>
+
+
+
+        <div class="select-noon"></div>
+
+        <div class="content-option">
+            <div id="product_content"  class="product-content">
+                <div class="products-title">
+                    Danh sách sản phẩm
+                </div>
+    
+                <div class="nav-products">
+                    <form class="form-search">
+                        <input type="text" class="search-products" name="product_name" placeholder="Tên sản phẩm">
+                        <button type="submit" class="related-tag  btn-option" style="background-color: rgb(248, 83, 110);" >Tìm kiếm</button>
+                    </form>
+                    <button id="btn_add" class="related-tag btn-option" >Thêm sản phẩm</button>
+                    <a href="/" class="related-tag btn-option" >Trang chủ</a>
+    
+                </div>
+    
+                <div class="list-products" style="border-bottom: 1px solid rgb(255, 78, 33);">
+                    <div class="product-item">
+                        <div class="product-list-info product-info-title">
+                            ID
+                        </div>
+        
+                        <div class="product-list-info product-info-title">
+                            Tên sản phẩm
+                        </div>
+        
+                        <div class="product-list-info product-info-title">
+                            Giá bán
+                        </div>
+        
+                        <div class="product-list-info product-info-title">
+                            Số lượng tồn kho
+                        </div>
+                    </div>
+    
+                    <div class="product-edit">
+                        
+                    </div>
+    
+                </div>
+    
+                {% for i in range(0, len) %}
+                <div class="list-products">
+                    <div class="product-item">
+                        <div class="product-list-info">
+                            {{products[i][0]}}
+                        </div>
+                        <div class="product-list-info">
+                            {{products[i][1]}}
+                        </div>
+        
+                        <div class="product-list-info">
+                            {{products[i][3]}}
+                        </div>
+        
+                        <div class="product-list-info">
+                            {{products[i][5]}}
+                        </div>
+                    </div>
+    
+                    <div class="product-edit">
+                        <button  class="js_show_product product-edit-item btn-edit-item" style="background-color: rgb(255, 99, 125)"
+                            onclick="onUpdateProduct('{{products[i]}}')">Chỉnh sửa</button>
+                        <a href="/delete/{{products[i][0]}}" class="product-edit-item">
+                            <button type="button" class="btn-edit-item" style="background-color: rgba(255, 46, 46, 0.792);">Xóa</button>
+                        </a>
+    
+                    </div>
+    
+                </div>
+                {% endfor %}
+            </div>
+
+            
+            <div id="users_content"  class="users-content">
+                <div class="products-title">
+                    Danh sách sản phẩm
+                </div>
+    
+                <div class="nav-products">
+                    <form class="form-search">
+                        <input type="text" class="search-products" name="product_name" placeholder="Tên sản phẩm">
+                        <button type="submit" class="related-tag  btn-option" style="background-color: rgb(248, 83, 110);" >Tìm kiếm</button>
+                    </form>
+                    <button id="btn_add" class="related-tag btn-option" >Thêm sản phẩm</button>
+                    <a href="/" class="related-tag btn-option" >Trang chủ</a>
+    
+                </div>
+    
+                <div class="list-products" style="border-bottom: 1px solid rgb(255, 78, 33);">
+                    <div class="product-item">
+                        <div class="product-list-info product-info-title">
+                            ID
+                        </div>
+        
+                        <div class="product-list-info product-info-title">
+                            Tên sản phẩm
+                        </div>
+        
+                        <div class="product-list-info product-info-title">
+                            Giá bán
+                        </div>
+        
+                        <div class="product-list-info product-info-title">
+                            Số lượng tồn kho
+                        </div>
+                    </div>
+    
+                    <div class="product-edit">
+                        
+                    </div>
+    
+                </div>
+    
+                {% for i in range(0, len) %}
+                <div class="list-products">
+                    <div class="product-item">
+                        <div class="product-list-info">
+                            {{products[i][0]}}
+                        </div>
+                        <div class="product-list-info">
+                            {{products[i][1]}}
+                        </div>
+        
+                        <div class="product-list-info">
+                            {{products[i][3]}}
+                        </div>
+        
+                        <div class="product-list-info">
+                            {{products[i][5]}}
+                        </div>
+                    </div>
+    
+                    <div class="product-edit">
+                        <button  class="js_show_product product-edit-item btn-edit-item" style="background-color: rgb(255, 99, 125)"
+                            onclick="onUpdateProduct('{{products[i]}}')">Chỉnh sửa</button>
+                        <a href="/delete/{{products[i][0]}}" class="product-edit-item">
+                            <button type="button" class="btn-edit-item" style="background-color: rgba(255, 46, 46, 0.792);">Xóa</button>
+                        </a>
+    
+                    </div>
+    
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+       
+
+
+    </div>
+
+    <!-- add product -->
+    <div id="product" class="modal">
+        <div  class="add-product">
+            <div class="add-content">
+                <form action="/add" method="post" class="form-add" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="upload-img">
+                            <div class="avatar-wrapper">
+                                <img id="avatar-preview" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY7qGmwPSyPiu7GB-Mr-vdSxc8jHTQlKL61g&usqp=CAU" alt="Avatar Preview">
+                            </div>
+                            <div class="btn-upload">
+                                <input  name="img" type="file" id="avatar-upload" class="input-avatar" accept="image/*" >
+                            </div>
+                        </div>
+                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin sản phẩm</span>
+                        
+                        <div class="update-info">
+                            
+                            <input type="text" name="product_id" class="form-control-info" placeholder="Nhập id sản phẩm...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input type="text" name="product_name" class="form-control-info" placeholder="Nhập tên sản phẩm...">
+                        </div>
+                        
+                        <div class="update-info">
+                            <input type="text" name="description" class="form-control-info" placeholder="Nhập mô tả sản phẩm...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input type="text" name="price" class="form-control-info" placeholder="Nhập giá sản phẩm...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input type="text" name="quantity" class="form-control-info" placeholder="Nhập số lượng sản phẩm...">
+                        </div>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button id="btn_close" type="button" class="btn-close" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark fa-xl"></i>
+                        </button>
+                        <button type="submit" class="btn-add">Thêm</button>
+                    </div>
+    
+                </form>
+    
+                
+            </div>
+        </div>
+
+    </div>
+    
+
+    <!-- update product Modal -->
+    <div id="product_update" class="modal">
+        <div  class="add-product">
+            <div class="add-content">
+                <form action="/update" method="post" class="form-add" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="upload-img">
+                            <div class="avatar-wrapper">
+                                <img id="avatar-update-preview" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY7qGmwPSyPiu7GB-Mr-vdSxc8jHTQlKL61g&usqp=CAU" alt="Avatar Preview">
+                            </div>
+                            <div class="btn-upload">
+                                <input  name="img" type="file" id="avatar_update" class="input-avatar" accept="image/*" >
+                            </div>
+                        </div>
+                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin sản phẩm</span>
+                        
+                        <div class="update-info">
+                            <input type="text" name="product_id" class="form-control-info" id="u_id" placeholder="Nhập id sản phẩm...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input type="text" name="product_name" class="form-control-info" id="u_name" placeholder="Nhập tên sản phẩm...">
+                        </div>
+                        
+                        <div class="update-info">
+                            <input type="text" name="description" class="form-control-info" id="u_description" placeholder="Nhập mô tả sản phẩm...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input type="text" name="price" class="form-control-info" id="u_price" placeholder="Nhập giá sản phẩm...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input type="text" name="quantity" class="form-control-info" id="u_quantity" placeholder="Nhập số lượng sản phẩm...">
+                        </div>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button  type="button" class="js_update_close btn-close" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark fa-xl"></i>
+                        </button>
+                        <button type="submit" class="btn-add">update</button>
+                    </div>
+    
+                </form>
+    
+                
+            </div>
+        </div>
+
+    </div>
+    
+    
+
+
+    <script src="../static/js/app.js"></script>
+</body>
+</html>

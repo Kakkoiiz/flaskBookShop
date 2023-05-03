@@ -1,0 +1,73 @@
+
+:root {
+    --header-color: rgb(249,219,219);
+    --input-color: rgb(236,208,208);
+    --btn-header: rgb(236,208,208);
+    --text-color: #B72479;
+    --input-slider: rgb(255,97,98);
+}
+
+body {
+    font-family: Work Sans,sans-serif;
+}
+
+.noon {
+    height: 40px;
+}
+
+.row {
+    display: flex;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.center_between {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn_none {
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+}
+
+.btn_header {
+    background-color: var(--btn-header);
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+    border-radius: 50%;
+}
+
+
+
+
+/* -----------Animation---------------- */
+
+
+@keyframes showSearch {
+    from {
+        transform: translateX(50px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+
+  
+  @keyframes burst-after {
+    0% {
+      opacity: 0;
+    }
+    50% {
+        opacity: 0.3;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
