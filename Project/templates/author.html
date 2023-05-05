@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/setup.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <div class="container-control">
+        <div class="select-option">
+            <a href="/" class="logo-link" style="margin: 10px 5px;">
+                <img src="https://i.pinimg.com/originals/ee/3e/29/ee3e295eb8ca1d142f4fb33099002e40.gif" alt="" class="logo_img" style="margin-left: 20px;">
+            </a>
+
+            <div class="menu-control">
+                <div class="btn_show_control row">
+                    <a href="/crud" id="btn_show_products" class="show_control_link">Thông tin sách</a>
+                </div>
+                <div class="btn_show_control row" style="background-color: rgb(238,218,218);">
+                    <a href="" id="btn_show_products" class="show_control_link">Thông tin tác giả</a>
+                </div>
+                <div class="btn_show_control row">
+                    <a href="" id="btn_show_products" class="show_control_link">Thông tin thể loại</a>
+                </div>
+                <div class="btn_show_control row">
+                    <a href="" id="btn_show_users" class="show_control_link">Thông tin người dùng</a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="select-noon"></div>
+
+        <div class="content-option">
+
+            <div id="author_content"  class="author-content">
+                <div class="products-title">
+                    Danh sách tác giả
+                </div>
+    
+                <div class="nav-products">
+                    <form class="form-search">
+                        <input type="text" class="search-products" name="name" placeholder="Tên tác giả">
+                        <button type="submit" class="related-tag  btn-option" style="background-color: rgb(248, 83, 110);" >Tìm kiếm</button>
+                    </form>
+                    <button id="btn_add_author" class="related-tag btn-option" >Thêm tác giả</button>
+                    <a href="/" class="related-tag btn-option" >Trang chủ</a>
+    
+                </div>
+    
+                <div class="list-products" style="border-bottom: 1px solid rgb(255, 78, 33);">
+                    <div class="product-item">
+                        <div class="product-list-info product-info-title">
+                            Name
+                        </div>
+
+                        <div class="product-list-info product-info-title">
+                            Nationality
+                        </div>
+
+                        <div class="product-list-info product-info-title">
+                            BirtDate
+                        </div>
+        
+                        
+                    </div>
+    
+                    <div class="product-edit">
+                        
+                    </div>
+    
+                </div>
+    
+                {% for i in range(0, len) %}
+                <div class="list-products">
+                    <div class="product-item">
+                        <div class="product-list-info">
+                            {{authors[i][0]}}
+                        </div>
+        
+                        <div class="product-list-info">
+                            {{authors[i][1]}}
+                        </div>
+        
+                        <div class="product-list-info">
+                            {{authors[i][2]}}
+                        </div>
+                     
+                    </div>
+    
+                    <div class="product-edit">
+                        <button  class="js_update_book product-edit-item btn-edit-item" style="background-color: rgb(255, 99, 125)"
+                            onclick='onUpdateBook("{{authors[i]}}")'>Chỉnh sửa</button>
+                        <a href="/delete/{{authors[i][0]}}" class="product-edit-item">
+                            <button type="button" class="btn-edit-item" style="background-color: rgba(255, 46, 46, 0.792);">Xóa</button>
+                        </a>
+    
+                    </div>
+    
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+
+        
+
+    </div>
+
+     <!-- add author -->
+    <div id="add_author" class="modal">
+        <div  class="add-product">
+            <div class="add-content">
+                <form action="/add_author" method="post" class="form-add" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        
+                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin tác giả</span>
+                        
+                        <div class="update-info">
+                            <input type="text" name="NameAuthor" class="form-control-info" placeholder="Nhập tên tác giả...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input type="text" name="nationality" class="form-control-info" placeholder="Nhập quốc tịch..">
+                        </div>
+        
+                        <div class="update-info">
+                            <input type="text" name="birtdate" class="form-control-info" placeholder="Nhập ngày sinh...">
+                        </div>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button id="close_add_author" type="button" class="btn-close" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark fa-xl"></i>
+                        </button>
+                        <button type="submit" class="btn-add">Thêm</button>
+                    </div>
+    
+                </form>
+    
+                
+            </div>
+        </div>
+
+        
+
+    </div>
+
+
+    <!-- Update product -->
+    <div id="update_author" class="modal">
+        <div  class="add-product">
+            <div class="add-content">
+                <form action="/update" method="post" class="form-add" enctype="multipart/form-data">
+                    <div class="modal-body">
+                       
+                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin sản phẩm</span>
+                        
+                        <div class="update-info">
+                            <input id="u_nameauthor" type="text" name="nameauthor" class="form-control-info" placeholder="Nhập tên tác giả...">
+                        </div>
+        
+                        <div class="update-info">
+                            <input id="u_nationality" type="text" name="nationality" class="form-control-info" placeholder="Nhập quốc tịch..">
+                        </div>
+        
+                        <div class="update-info">
+                            <input id="u_birtdate" type="text" name="birtdate" class="form-control-info" placeholder="Nhập ngày sinh...">
+                        </div>
+                       
+        
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button type="button" class="js_close_update btn-close" data-bs-dismiss="modal">
+                            <i class="fa-solid fa-xmark fa-xl"></i>
+                        </button>
+                        <button type="submit" class="btn-add">update</button>
+                    </div>
+    
+                </form>
+    
+                
+            </div>
+        </div>
+
+        
+
+    </div>
+
+
+</body>
+<script src="../static/js/app.js"></script>
+</html>

@@ -19,8 +19,18 @@
             </a>
 
             <div class="menu-control">
-                <button id="btn_show_products" class="btn_show_control">Thông tin hàng hóa</button>
-                <button id="btn_show_users" class="btn_show_control">Thông tin người dùng</button>
+                <div class="btn_show_control row" style="background-color: rgb(238,218,218);">
+                    <a href="/crud" id="btn_show_products" class="show_control_link">Thông tin sách</a>
+                </div>
+                <div class="btn_show_control row">
+                    <a href="/author" id="btn_show_products" class="show_control_link">Thông tin tác giả</a>
+                </div>
+                <div class="btn_show_control row">
+                    <a href="" id="btn_show_products" class="show_control_link">Thông tin thể loại</a>
+                </div>
+                <div class="btn_show_control row">
+                    <a href="" id="btn_show_users" class="show_control_link">Thông tin người dùng</a>
+                </div>
             </div>
 
         </div>
@@ -126,9 +136,6 @@
                 </div>
                 {% endfor %}
             </div>
-
-            
-            
         </div>
 
         
@@ -212,7 +219,7 @@
                         
                         <div class="update-info">
                             
-                            <input id="u_book_id" type="text" name="book_id" class="form-control-info" placeholder="Nhập id  sách...">
+                            <input id="u_book_id" type="text" name="book_id" class="form-control-info" placeholder="Nhập id  sách..." readonly>
                         </div>
         
                         <div class="update-info">

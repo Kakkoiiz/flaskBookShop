@@ -61,7 +61,7 @@ for (var i = 0; i < closeUpdateBook.length; i++){
 
 
 function onUpdateBook(book_string) {
-  book_string = book_string.replaceAll("'", "").replaceAll('(', '').replaceAll(')', '').trim();
+  book_string = book_string.replaceAll("'", "").replaceAll('(', '').replaceAll(')', '').replaceAll("Decimal", "").trim();
   var book = book_string.split(",");
   var u_book_id = document.getElementById("u_book_id");
   var u_title = document.getElementById("u_title");
@@ -80,4 +80,7 @@ function onUpdateBook(book_string) {
   avatar_update = book[6].trim();
   
 }
+
+// ---------Author----------
+
 

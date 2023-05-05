@@ -15,8 +15,7 @@ def home():
 
 @app.route('/crud')
 def crud():
-   
-   
+
    title = request.args.get('title')
    if title != None:
       cursor.execute(
@@ -30,7 +29,7 @@ def crud():
 # Tạo đường dẫn add book
 @app.route('/add', methods = ['POST'])
 def add():
-   # Lấy các giá trị ở trong form qua phương thức get
+   # Lấy các giá trị ở trong form qua phương thức post
    if request.method == 'POST':
       book_id = request.form.get('book_id')
       title = request.form.get('title')
@@ -49,12 +48,35 @@ def add():
          img_pil.save(img_buffer, format='JPEG')
          img_binary = img_buffer.getvalue()
          img_base64 = base64.b64encode(img_data)
-       # Thêm thông tin book vào cơ sở dữ liệu
+
+      # Kiểm tra tác giả và thể loại đã tồn tại trong bảng hay chưa
+      sql_check_author = f"SELECT * FROM authors WHERE AuthorName = '{author}'"
+      cursor.execute(sql_check_author)
+      author_result = cursor.fetchone()
+
+      if not author_result:
+          # Thêm tác giả mới nếu không tồn tại trong bảng
+          sql_add_author = f"INSERT IGNORE INTO authors (AuthorName) VALUES ('{author}')"
+          cursor.execute(sql_add_author)
+          mydb.commit()
+
+      sql_check_genre = f"SELECT * FROM genres WHERE GenreName = '{genre}'"
+      cursor.execute(sql_check_genre)
+      genre_result = cursor.fetchone()
+
+      if not genre_result:
+          # Thêm thể loại mới nếu không tồn tại trong bảng
+          sql_add_genre = f"INSERT IGNORE INTO genres (GenreName) VALUES ('{genre}')"
+          cursor.execute(sql_add_genre)
+          mydb.commit()
+
+      # Thêm thông tin book vào cơ sở dữ liệu
       sql = f'INSERT INTO books (BookID, Title, AuthorName, GenreName, PublishYear, Price, Image) VALUES (%s, %s, %s, %s, %s, %s, %s)'
       val = (book_id, title, author, genre, year, price, img_binary)
       cursor.execute(sql, val)
       mydb.commit()
-      # trả về đường dẫn crud
+
+   # Trả về đường dẫn crud
    return redirect('/crud')
 
 
@@ -94,6 +116,18 @@ def delete(book_id):
    cursor.execute(sql)
    mydb.commit()
    return redirect('/crud')
+
+
+@app.route('/author')
+def author():
+   name = request.args.get('name')
+   if name != None:
+      cursor.execute(
+         f'SELECT * FROM authors WHERE NameAuthor LIKE "%{name}%"')
+   else:
+      cursor.execute('SELECT * FROM authors')
+   authors = cursor.fetchall()
+   return render_template('author.html', authors = authors, len = len(authors))
    
 
 if __name__ == '__main__':
