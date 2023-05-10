@@ -80,7 +80,3 @@ function onUpdateBook(book_string) {
   avatar_update = book[6].trim();
   
 }
-
-// ---------Author----------
-
-

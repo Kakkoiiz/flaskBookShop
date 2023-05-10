@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/setup.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    
+    <div class="container-control">
+        <div class="select-option">
+            <a href="/" class="logo-link" style="margin: 10px 5px;">
+                <img src="https://i.pinimg.com/originals/ee/3e/29/ee3e295eb8ca1d142f4fb33099002e40.gif" alt="" class="logo_img" style="margin-left: 20px;">
+            </a>
+
+            <div class="menu-control">
+                <div class="btn_show_control row">
+                    <a href="/crud" id="btn_show_products" class="show_control_link">Thông tin sách</a>
+                </div>
+                <div class="btn_show_control row">
+                    <a href="/author" id="btn_show_products" class="show_control_link">Thông tin tác giả</a>
+                </div>
+                <div class="btn_show_control row" >
+                    <a href="/genre" id="btn_show_products" class="show_control_link">Thông tin thể loại</a>
+                </div>
+                <div class="btn_show_control row" style="background-color: rgb(238,218,218);">
+                    <a href="/user" id="btn_show_users" class="show_control_link">Thông tin người dùng</a>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="select-noon"></div>
+
+        <div class="content-option">
+
+            <div id="author_content"  class="author-content">
+                <div class="products-title">
+                    Danh sách user
+                </div>
+    
+                <div class="nav-products">
+                    <form class="form-search">
+                        <input type="text" class="search-products" name="phone_number" placeholder="Số điện thoại">
+                        <button type="submit" class="related-tag  btn-option" style="background-color: rgb(248, 83, 110);" >Tìm kiếm</button>
+                    </form>
+                    <a href="/" class="related-tag btn-option" >Trang chủ</a>
+    
+                </div>
+    
+                <div class="list-products" style="border-bottom: 1px solid rgb(255, 78, 33);">
+                    <div class="product-item">
+                        <div class="product-list-info product-info-title">
+                            Phone
+                        </div>
+
+                        <div class="product-list-info product-info-title">
+                            Email
+                        </div>
+                        
+                        <div class="product-list-info product-info-title">
+                            Full Name
+                        </div>
+                        
+                    </div>
+    
+                    <div class="product-edit">
+                        
+                    </div>
+    
+                </div>
+    
+                {% for i in range(0, len) %}
+                {% if users[i][2] != 'admin' %}
+                <div class="list-products">
+                    <div class="product-item">
+                        <div class="product-list-info">
+                            {{users[i][0]}}
+                        </div>
+        
+                        <div class="product-list-info" style="width: 50%;">
+                            {{users[i][1]}}
+                        </div>
+                        
+                        <div class="product-list-info">
+                            {{users[i][2]}}
+                        </div>
+                     
+                    </div>
+    
+                    <div class="product-edit">
+                        <a href="/delete_user/{{users[i][0]}}" class="product-edit-item">
+                            <button type="button" class="btn-edit-item" style="background-color: rgba(255, 46, 46, 0.792);">Xóa</button>
+                        </a>
+    
+                    </div>
+    
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            
+        </div>
+
+        
+
+    </div>
+
+
+
+
+
+</body>
+</html>

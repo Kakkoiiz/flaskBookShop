@@ -61,6 +61,36 @@
     
 }
 
+.btn_info {
+  position: relative;
+}
+
+.btn_info:hover .btn_option {
+  display: block;
+}
+
+.btn_option {
+  display: none;
+  width: 180px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgb(255, 236, 236);
+  border-radius: 10%;
+}
+
+.btn_option_item {
+  padding: 10px 15px;
+}
+
+.user_option {
+  color: var(--text-color);
+  padding: 10px;
+}
+
+.btn_option_item:hover {
+  background-color: rgb(235, 219, 219) ;
+}
 
 /* -----------Carousel------------ */
 
@@ -657,12 +687,13 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    word-break: break-all;
+    word-break: break-word;
   }
 
   .product-img {
     border-radius: 10%;
     height: 100%;
+    width: 55%;
   }
   
   .product-info-title {
@@ -721,13 +752,13 @@
     font-size: 15px;
     border: none;
     width: 100%;
-    height: 50px;
     background-color: unset;
     cursor: pointer;
     text-align: left;
   }
   
   .show_control_link {
+    padding: 25px 0px;
     color: black;
   }
   .btn_show_control:hover {
@@ -765,6 +796,7 @@
     animation: modalFadeIn ease .5s;
   }
   .add-content {
+    
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   
@@ -807,6 +839,8 @@
   .update-info {
     margin-top: 20px;
   }
+
+
   .form-control-info {
     padding-left: 10px;
     border-radius: 5px;
@@ -836,6 +870,149 @@
     height: 20px;
     background-color: rgb(250, 87, 114);
   
+  }
+
+
+  /* -----------Login--------------- */
+
+
+.cps-login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+  }
+  
+  .back-login {
+    display: flex;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .back-login_title {
+    margin-left: 10px;
+    color: #ff5757;
+  
+  }
+  
+  
+  .cps-login_logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .login_img {
+    width: 250px;
+  }
+  .login-form {
+    display: flex;
+    justify-content: center;
+  
+  }
+  
+  
+  .logo_title {
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 0px;
+  }
+  
+  .field {
+    display: grid;
+  }
+  
+  .group-item {
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: #FAFAFA;
+    width: 600px;
+    height: 40px;
+    padding-left: 20px;
+  }
+  
+  .forget-pass {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 15px;
+    color: #7c7777;
+  }
+  
+  .check-option {
+    margin-top: 10px;
+  }
+  
+  .option-checkbox {
+    transform: translateY(1.5px);
+  }
+  
+  
+  .btn-submit {
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: rgb(253, 145, 145);
+  }
+  
+  .btn-text {
+    color: white;
+  }
+  
+  .line-through {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .line-through hr {
+    background-color: #dbdbdb;
+    width: 100%;
+  }
+  
+  .line-through p {
+    margin: 0px 5px;
+  }
+  
+  .login-gg {
+    margin-top: 20px;
+    border: 1px solid #bbb7b7;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-gg_text {
+    margin: 15px 10px;
+    color: var(--text-color);
+  }
+  
+  .login-question {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .login-question_text {
+    color: #7c7777;
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  
+  .register {
+    color: var(--text-color);
+    font-size: 14px
+  }
+
+  .user-login {
+    text-transform: uppercase;
+    margin-left: 10px;
+    color: var(--input-slider);
   }
   
   

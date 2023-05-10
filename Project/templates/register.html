@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/reset.css">
+    <link rel="stylesheet" href="../static/css/setup.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="session-header">
+            <header class="header-area">
+                <div class="top_logo_header row">
+                    <a href="/" class="logo_link">
+                        <img src="https://i.pinimg.com/originals/ee/3e/29/ee3e295eb8ca1d142f4fb33099002e40.gif" alt="" class="logo_img">
+                    </a>
+
+                    <div class="header_menu row">
+                        <ul class="navbar_main_menu row center_between">
+                            <li class="navbar_menu_item">
+                                <a class="navbar_menu_link" href="">Home</a>
+                            </li>
+                            <li class="navbar_menu_item">
+                                <a class="navbar_menu_link" href="">Blog</a>
+                            </li>
+                            <li class="navbar_menu_item">
+                                <a class="navbar_menu_link" href="">Shop</a>
+                            </li>
+                            <li class="navbar_menu_item">
+                                <a class="navbar_menu_link" href="">Contact</a>
+                            </li>
+                            <li class="navbar_menu_item">
+                                <a class="navbar_menu_link" href="">About Us</a>
+                            </li>
+                            <li class="navbar_menu_item">
+                                <a class="navbar_menu_link" href="">Pages</a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="header_user row center">
+                        <form id="header_top_search" action="" class="header_top_search">
+                            <input type="text" class="top_search_input" placeholder="Search our store">
+                            <button class="top_search_btn btn_none">
+                                <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #958E8E;"></i>
+                            </button>
+                        </form>
+
+                        <button id="btn_show_search" class="btn_search btn_header btn_none">
+                                <i class="fa-solid fa-magnifying-glass fa-xl" style="color: #B72479;"></i>
+                        </button>
+
+                        <div class="user_cart">
+                            <button class="btn_cart_active btn_header btn_none">
+                                <i class="fa-solid fa-cart-shopping fa-xl" style="color: #B72479;"></i>
+                            </button>
+                        </div>
+                        <div class="btn_header row center">
+                            <a href="/login" class="infor">
+                                <i class="fa-solid fa-user fa-xl " style="color: #B72479;"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+            </header>
+        </div>
+
+        <div class="noon"></div>
+
+        <div class="cps-login-page">
+            <div class="login-form">
+                <div class="login-form-cover">
+                    <div class="back-login">
+                        <a href="{{ url_for('login') }}">
+                            <i class="fa-solid fa-arrow-left fa-xl" style="color: #ff5757;"></i>
+                        </a>
+                        <div class="back-login_title">Đăng ký tài khoản</div>
+                    </div>
+                    <div class="cps-login_logo">
+                        <img src="https://i.pinimg.com/originals/7a/0f/6e/7a0f6eba673293e8ab12382e32f15412.gif" alt="" class="login_img">
+                    </div>
+                    
+                    <p class="logo_title">
+                        Đăng ký tài khoản
+                    </p>
+        
+                    <form action="/register" method="post">
+                        <div class="field">
+                            <input type="text" name="phone_number" class="group-item" placeholder="Vui lòng nhập số diện thoại (bắt buộc)">
+                        </div>
+        
+                        <div class="field">
+                            <input type="text" name="email" class="group-item" placeholder="Vui lòng nhập email (bắt buộc)">
+                        </div>
+    
+                        <div class="field">
+                            <input type="text" name="full_name" class="group-item" placeholder="Vui lòng nhập họ và tên">
+                        </div>
+    
+                        <div class="field">
+                            <input type="text" name="password" class="group-item" placeholder="Vui lòng nhập mật khẩu">
+                        </div>
+    
+                       
+                        
+                        <div class="check-option">
+                            <input type="checkbox" class="option-checkbox">
+                            <label for="" class="option-checkbox_text">Tôi đồng ý với các điều khoản bảo mật cá nhân</label>
+                        </div>
+    
+                        <div class="check-option">
+                            <input type="checkbox" class="option-checkbox">
+                            <label for="" class="option-checkbox_text">Đăng ký nhận bản tin khuyến mãi qua email</label>
+                        </div>
+                        
+                        
+                        <div class="submit">
+                            <button class="btn-submit" type = "submit">
+                                <span class="btn-text">Đăng ký</span>
+                            </button>
+                        </div>
+                    </form>
+    
+                    <div class="line-through">
+                        <hr>
+                        <p>hoặc</p>
+                        <hr>
+                    </div>
+    
+                    <a href="" class="login-gg">
+                        <i class="fa-brands fa-google fa-xl" style="color: #f45d99;"></i>
+                        <div class="login-gg_text">Đăng nhập bằng Google</div>
+                    </a>
+    
+                    <div class="login-question">
+                        <span class="login-question_text">Bạn đã có tài khoản?</span>
+                        <a href="{{ url_for('login') }}" class="register">Đăng nhập ngay</a>
+                    </div>
+    
+    
+                </div>
+            </div>
+        </div>
+       
+       
+        <footer class="footer_section row center">
+            <div class="container_footer">
+                <div class="footer_top_area row center_between">
+                    <div class="footer_top_logo">
+                        <a class="footer_logo" href="/">
+                            <img src="https://i.pinimg.com/564x/89/c9/0e/89c90e9129432fb9c3530cffae353101.jpg" style="width: 100px; border-radius: 10px;">
+                        </a>
+                    </div>
+                    <div class="footer_top_contact">
+
+                        <i class="fa-solid fa-phone" style="color: #ffffff;"></i>
+                        Call Us : <strong> +84 326680326</strong>
+          
+                    </div>
+                    <div class="footer_top_social">
+                        <div class="footer_top_social_wrap ">
+                            <a href="">
+                                <i class="fa-brands fa-facebook fa-xl" style="color: #ffffff;"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-brands fa-instagram fa-xl" style="color: #ffffff;"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-brands fa-twitter fa-xl" style="color: #ffffff;"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa-brands fa-youtube fa-xl" style="color: #ffffff;"></i>
+                            </a>
+                         </div>
+                    </div>
+                </div>
+
+                <div class="footer_content row center_between">
+                    <div class="footer_widget row center">
+                        <div class="footer_help">
+                            <div class="footer_title">Follow Us On</div>
+
+                            <ul class="social_widget">
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-plane-departure" style="color: #ffffff;"></i> Delivery Info</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i> Shipping &amp; Returns</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-message" style="color: #ffffff;"></i> Help Info</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-headset" style="color: #ffffff;"></i> Contact Info</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-info" style="color: #ffffff;"></i> FAQ Info</a>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+
+                    <div class="footer_widget row center">
+                        <div class="footer_help">
+                            <div class="footer_title">Infomation</div>
+
+                            <ul class="social_widget">
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> New collection</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> Manufacturers</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> New products</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> Suppliers</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> Delivery & returns</a>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+
+                    <div class="footer_widget row center">
+                        <div class="footer_help">
+                            <div class="footer_title">Infomation</div>
+
+                            <ul class="social_widget">
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> New collection</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> Manufacturers</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> New products</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> Suppliers</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""><i class="fa-solid fa-circle-dot fa-2xs" style="color: #ffffff;"></i> Delivery & returns</a>
+                                </li>
+                              </ul>
+                        </div>
+                    </div>
+
+                    <div class="footer_widget row center">
+                        <div class="footer_help">
+                            <div class="footer_title">About Info</div>
+
+                            <ul class="social_widget_info">
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""> Subscribe to our newsleter, Enter your emil address</a>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <form action="">
+                                        <input type="text" class="footer_input" placeholder="Email...">
+                                        <button class="footer_btn">Send</button>
+                                    </form>
+                                </li>
+
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href=""> We’ll never share your email.</a>
+                                </li>
+                                <li class="footer_icon_item">
+                                    <a class="footer_help_icon" href="">
+                                        <img style="width: 100%;" src="//cdn.shopify.com/s/files/1/1288/2297/files/app_store2_large.png?v=1645079941" alt="">
+                                    </a>
+                                </li>
+
+                              </ul>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+
+    <script>
+        
+        var btnShowSearch = document.getElementById('btn_show_search');
+        var topSearch = document.getElementById('header_top_search');
+
+        function showSearch() {
+            if (topSearch.style.display == 'block') {
+                topSearch.style.display = 'none'
+            } else {
+                topSearch.style.display ='block'
+                btnShowSearch.style.display='none'
+            }
+        }
+
+        btnShowSearch.addEventListener("click", showSearch)
+
+    </script>
+
+</body>
+
+</html>

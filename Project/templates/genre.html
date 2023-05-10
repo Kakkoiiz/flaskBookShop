@@ -22,10 +22,10 @@
                 <div class="btn_show_control row">
                     <a href="/crud" id="btn_show_products" class="show_control_link">Thông tin sách</a>
                 </div>
-                <div class="btn_show_control row" style="background-color: rgb(238,218,218);">
-                    <a href="/#" id="btn_show_products" class="show_control_link">Thông tin tác giả</a>
-                </div>
                 <div class="btn_show_control row">
+                    <a href="/author" id="btn_show_products" class="show_control_link">Thông tin tác giả</a>
+                </div>
+                <div class="btn_show_control row" style="background-color: rgb(238,218,218);">
                     <a href="/genre" id="btn_show_products" class="show_control_link">Thông tin thể loại</a>
                 </div>
                 <div class="btn_show_control row">
@@ -48,26 +48,22 @@
     
                 <div class="nav-products">
                     <form class="form-search">
-                        <input type="text" class="search-products" name="name" placeholder="Tên tác giả">
+                        <input type="text" class="search-products" name="genre" placeholder="Tên thể loại">
                         <button type="submit" class="related-tag  btn-option" style="background-color: rgb(248, 83, 110);" >Tìm kiếm</button>
                     </form>
-                    <button id="btn_add" class="related-tag btn-option" >Thêm tác giả</button>
+                    <button id="btn_add" class="related-tag btn-option" >Thêm thể loại</button>
                     <a href="/" class="related-tag btn-option" >Trang chủ</a>
     
                 </div>
     
                 <div class="list-products" style="border-bottom: 1px solid rgb(255, 78, 33);">
                     <div class="product-item">
-                        <div class="product-list-info product-info-title" style="width: 30%;">
+                        <div class="product-list-info product-info-title">
                             Name
                         </div>
 
-                        <div class="product-list-info product-info-title">
-                            Nationality
-                        </div>
-
-                        <div class="product-list-info product-info-title">
-                            BirtDate
+                        <div class="product-list-info product-info-title" style="width: 70%;">
+                            Description
                         </div>
         
                         
@@ -82,24 +78,21 @@
                 {% for i in range(0, len) %}
                 <div class="list-products">
                     <div class="product-item">
-                        <div class="product-list-info" style="width: 30%;">
-                            {{authors[i][0]}}
+                        <div class="product-list-info">
+                            {{genres[i][0]}}
                         </div>
         
-                        <div class="product-list-info">
-                            {{authors[i][1]}}
+                        <div class="product-list-info" style="width: 70%; justify-content: left;">
+                            {{genres[i][1]}}
                         </div>
         
-                        <div class="product-list-info">
-                            {{authors[i][2]}}
-                        </div>
                      
                     </div>
     
                     <div class="product-edit">
                         <button  class="js_update_book product-edit-item btn-edit-item" style="background-color: rgb(255, 99, 125)"
-                            onclick='onUpdateAuthor("{{authors[i]}}")'>Chỉnh sửa</button>
-                        <a href="/delete_author/{{authors[i][0]}}" class="product-edit-item">
+                            onclick='onUpdateGenre("{{genres[i]}}")'>Chỉnh sửa</button>
+                        <a href="/delete_genre/{{genres[i][0]}}" class="product-edit-item">
                             <button type="button" class="btn-edit-item" style="background-color: rgba(255, 46, 46, 0.792);">Xóa</button>
                         </a>
     
@@ -117,24 +110,22 @@
 
      <!-- add author -->
     <div id="add_book" class="modal">
-        <div  class="add-product"  style="top: 15%;" >
+        <div  class="add-product" style="top: 20%;" >
             <div class="add-content" style="padding: 100px 0px;">
-                <form action="/add_author" method="post" class="form-add" enctype="multipart/form-data">
+                <form action="/add_genre" method="post" class="form-add" enctype="multipart/form-data">
                     <div class="modal-body">
                         
-                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin tác giả</span>
+                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin thể loại</span>
                         
                         <div class="update-info">
-                            <input type="text" name="authorname" class="form-control-info" placeholder="Nhập tên tác giả...">
+                            <input type="text" name="genrename" class="form-control-info" placeholder="Nhập tên thể loại...">
                         </div>
         
                         <div class="update-info">
-                            <input type="text" name="nationality" class="form-control-info" placeholder="Nhập quốc tịch..">
+                            <input type="text" name="description" class="form-control-info" placeholder="Nhập mô tả..">
                         </div>
         
-                        <div class="update-info">
-                            <input type="date" name="birthdate" class="form-control-info">
-                        </div>
+                        
                     </div>
     
                     <div class="modal-footer">
@@ -157,25 +148,21 @@
 
     <!-- Update product -->
     <div id="update_book" class="modal">
-        <div  class="add-product"  style="top: 15%;">
+        <div  class="add-product"  style="top: 20%;">
             <div class="add-content" style="padding: 100px 0px;">
-                <form action="/update_author" method="post" class="form-add" enctype="multipart/form-data">
+                <form action="/update_genre" method="post" class="form-add" enctype="multipart/form-data">
                     <div class="modal-body">
                        
-                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin tác giả</span>
+                        <span class="title" style="font-size: 20px; margin-left: 25px;">Nhập thông tin thể loại</span>
                         
                         <div class="update-info">
-                            <input id="u_authorname" type="text" name="authorname" class="form-control-info" style="background-color: rgb(255, 225, 225);"  readonly>
+                            <input id="u_genrename" type="text" name="genrename" class="form-control-info" style="background-color: rgb(255, 225, 225);"  readonly>
                         </div>
         
                         <div class="update-info">
-                            <input id="u_nationality" type="text" name="nationality" class="form-control-info" placeholder="Nhập quốc tịch..">
+                            <input id="u_description" type="text" name="description" class="form-control-info" placeholder="Nhập mô tả">
                         </div>
-        
-                        <div class="update-info">
-                            <input id="u_birtdate" type="date" name="birthdate" class="form-control-info">
-                        </div>
-                       
+
         
                     </div>
     
@@ -234,17 +221,15 @@
         closeUpdateBook[i].addEventListener('click', showUpdate)
     }
   
-    function onUpdateAuthor(author_string) {
-        author_string = author_string.replaceAll("'", "").replaceAll('(', '').replaceAll(')', '').replaceAll('datetime.date', '').trim();
-        var author = author_string.split(",")
-        var u_authorname = document.getElementById("u_authorname");
-        var u_nationality = document.getElementById("u_nationality");
-        var u_birtdate = document.getElementById("u_birtdate");
+    function onUpdateGenre(genre_string) {
+        genre_string = genre_string.replaceAll("'", "").replaceAll('(', '').replaceAll(')', '').trim();
+        var genre = genre_string.split(",")
+        var u_genrename = document.getElementById("u_genrename");
+        var u_description = document.getElementById("u_description");
 
-        u_authorname.value = author[0].trim();
-        u_nationality.value = author[1].trim();
-        var date = new Date('"' + author[2] + '-' + author[3] + '-' + author[4] + '"');
-        u_birtdate.value = date.toISOString().substring(0, 10);
+        u_genrename.value = genre[0].trim();
+        u_description.value = genre[1].trim();
+     
     }
 
 

@@ -20,16 +20,16 @@
 
             <div class="menu-control">
                 <div class="btn_show_control row" style="background-color: rgb(238,218,218);">
-                    <a href="/crud" id="btn_show_products" class="show_control_link">Thông tin sách</a>
+                    <a href="#" id="btn_show_products" class="show_control_link">Thông tin sách</a>
                 </div>
                 <div class="btn_show_control row">
                     <a href="/author" id="btn_show_products" class="show_control_link">Thông tin tác giả</a>
                 </div>
                 <div class="btn_show_control row">
-                    <a href="" id="btn_show_products" class="show_control_link">Thông tin thể loại</a>
+                    <a href="/genre" id="btn_show_products" class="show_control_link">Thông tin thể loại</a>
                 </div>
                 <div class="btn_show_control row">
-                    <a href="" id="btn_show_users" class="show_control_link">Thông tin người dùng</a>
+                    <a href="/user" id="btn_show_users" class="show_control_link">Thông tin người dùng</a>
                 </div>
             </div>
 
@@ -176,7 +176,7 @@
                         </div>
         
                         <div class="update-info">
-                            <input type="text" name="year" class="form-control-info" placeholder="Nhập năm xuất bản...">
+                            <input type="number" name="year" class="form-control-info" placeholder="Nhập năm xuất bản..." min="1901" max="2023" step="1">
                         </div>
                         <div class="update-info">
                             <input type="text" name="price" class="form-control-info" placeholder="Nhập giá sách...">
