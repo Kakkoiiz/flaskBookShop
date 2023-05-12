@@ -1,28 +1,35 @@
-from flask import Flask, url_for, redirect, session, request, render_template
-from db_config import mydb, cursor
-from PIL import Image
-import io
+from flask import Flask, url_for, redirect, session, request, render_template  # import các module cần thiết
+from db_config import mydb, cursor # kết nối và tương tác với cơ sở dữ liệu
+from PIL import Image   #  xử lý hình ảnh
+import io   #
 import base64
 
+# Khởi tạo một đối tượng ứng dụng Flask
 app = Flask(__name__)
+# Đặt giá trị secret key đê bảo vệ session
 app.secret_key = "Dungdz1st"
 
+
+#Trang Home
 @app.route('/')
 def home():
-   cursor.execute("SELECT * FROM books")
-   books = cursor.fetchall()
-   role = session.get('role')
+   cursor.execute("SELECT * FROM books")  # truy vấn dữ liệu từ bảng books
+   books = cursor.fetchall() # gắn kết quả truy vấn vào books
+   role = session.get('role') # Lấy role từ session
    return render_template('index.html', books = books, len = len(books), base64 = base64, get_user_fullname = get_user_fullname, role = role)
 
 
-# User
+# Thao tác của người dùng
+# Trang đăng ký tài khoản
 @app.route('/register', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
+        # Lấy các giá trị trong trường từ biểu mẫu gán vào biến tương ứng
         phone_number = request.form.get('phone_number')
         email = request.form.get('email')
         full_name = request.form.get('full_name')
         password = request.form.get('password')
+        # Kiểm tra sdt đã tồn tại hay chưa 
         cursor.execute('SELECT phone_number FROM users WHERE phone_number = %s', (phone_number,))
         exit_user = cursor.fetchone()
         if exit_user:
@@ -34,15 +41,18 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html')
 
-
+# Trang đăng nhập
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        # Lấy giá trị trong biểu mẫu login gán vào các biên tương ứng
         phone_number = request.form.get('phone_number')
         password = request.form.get('password')
         sql = 'SELECT * FROM users WHERE phone_number = %s AND password = %s'
         cursor.execute(sql, (phone_number, password))
+        # Lấy kết quả truy vấn đầu tiên từ cursor gán vào biến user
         user = cursor.fetchone()
+        # Kiểm tra user có chưa
         if user:
             role = user[4]
             session['role'] = role
@@ -53,14 +63,17 @@ def login():
     return render_template('login.html')
  
  
+# Đường dẫn đăng xuất 
 @app.route('/logout')
 def logout():
+   # Xóa các giá trị trả về Noe
    session.pop('role', None)
    session.pop('phone_number', None)
    return redirect(url_for('login'))
 
 
 def get_user_fullname(phone_number):
+   # Lầy full_name từ bảng users với số điện thoại tương ứng
    cursor.execute('SELECT full_name FROM users WHERE phone_number = %s', (phone_number,))
    result = cursor.fetchone()
    if result:
@@ -69,24 +82,30 @@ def get_user_fullname(phone_number):
       return 'Người dùng'
 
 
+# Trang thao tác với sách
 @app.route('/crud')
 def crud():
+   # Lấy giá trị từ khóa role gán vào bién role và kiểm tra nếu không phải admin trả về home
    role = session.get('role')
    if role != 'admin':
       return redirect(url_for('home'))
    
+   # Tạo chức năng tìm kiếm
    title = request.args.get('title')
+   # Thực hiện chức năng truy vấn csdl lấy tất cả các trường từ bảng books với tiêu đề title lấy từ biểu mẩu trên
    if title != None:
       cursor.execute(f'SELECT * FROM books WHERE Title LIKE "%{title}%"')
    else:
+      # Trả về bảng books như ban đầu
       cursor.execute('SELECT * FROM books')
+   # Lấy tất cả truy vấn từ cursor và gán cho biến books
    books = cursor.fetchall()
    return render_template('crud.html', books=books, len=len(books), base64=base64)
 
 # Tạo đường dẫn add book
 @app.route('/add', methods = ['POST'])
 def add():
-   # Lấy các giá trị ở trong form qua phương thức post
+   # Kiểm tra xem phương thức có phải là Post hay không
    if request.method == 'POST':
       book_id = request.form.get('book_id')
       title = request.form.get('title')
@@ -106,7 +125,7 @@ def add():
          img_binary = img_buffer.getvalue()
          img_base64 = base64.b64encode(img_data)
 
-      # Kiểm tra tác giả và thể loại đã tồn tại trong bảng hay chưa
+      # Kiểm tra tác giả đã tồn tại trong bảng hay chưa
       sql_check_author = f"SELECT * FROM authors WHERE AuthorName = '{author}'"
       cursor.execute(sql_check_author)
       author_result = cursor.fetchone()
@@ -117,6 +136,7 @@ def add():
           cursor.execute(sql_add_author)
           mydb.commit()
 
+      # Kiểm tra thể loại đã tồn tại trong bảng hay chưa
       sql_check_genre = f"SELECT * FROM genres WHERE GenreName = '{genre}'"
       cursor.execute(sql_check_genre)
       genre_result = cursor.fetchone()
@@ -139,10 +159,6 @@ def add():
 
 @app.route('/update', methods=['GET', 'POST'] )
 def update():
-   role = session.get('role')
-   if role != 'admin':
-      return redirect(url_for('home'))
-   # Lấy các giá trị ở trong form qua phương thức get
    if request.method == 'POST':
       book_id = request.form.get('book_id')
       title = request.form.get('title')
@@ -202,6 +218,10 @@ def delete(book_id):
 
 @app.route('/author')
 def author():
+   role = session.get('role')
+   if role != 'admin':
+      return redirect(url_for('home'))
+   
    name = request.args.get('name')
    if name != None:
       cursor.execute(
@@ -213,11 +233,7 @@ def author():
    
 
 @app.route('/add_author', methods= ['POST'])
-def addAuthor():
-   role = session.get('role')
-   if role != 'admin':
-      return redirect(url_for('home'))
-   
+def addAuthor():   
    if request.method == 'POST':
       authorname = request.form.get('authorname')
       nationality = request.form.get('nationality')
@@ -231,10 +247,6 @@ def addAuthor():
 
 @app.route('/update_author', methods= ['GET', 'POST'])
 def updateAuthor():
-   role = session.get('role')
-   if role != 'admin':
-      return redirect(url_for('home'))
-   
    if request.method == 'POST':
       authorname = request.form.get('authorname')
       nationality = request.form.get('nationality')
